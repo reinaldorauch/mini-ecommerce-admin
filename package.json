@@ -9,7 +9,18 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@element-plus/nuxt": "^1.0.4",
+    "@nuxtjs/color-mode": "^3.2.0",
+    "@pinia/nuxt": "^0.4.9",
     "@types/node": "^18",
-    "nuxt": "^3.4.1"
+    "@unocss/nuxt": "^0.51.5",
+    "@vueuse/nuxt": "^10.0.2",
+    "nuxt": "^3.4.1",
+    "sass": "^1.62.0"
+  },
+  "dependencies": {
+    "element-plus": "^2.3.3",
+    "pinia": "^2.0.35"
   }
 }
