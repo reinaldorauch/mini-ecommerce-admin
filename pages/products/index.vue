@@ -23,7 +23,9 @@ const { data: prods, pending, error } =
 </script>
 <template>
   <h1>Produtos</h1>
-  <el-link type="primary" href="/products/new">Adicionar</el-link>
+  <NuxtLink to="/products/new">
+    <el-link type="primary">Adicionar</el-link>
+  </NuxtLink>
   <ul v-if="prods">
     <li v-for="p of prods.data">{{ p.title }}</li>
   </ul>
