@@ -2,6 +2,7 @@
   "name": "nuxt-app",
   "private": true,
   "scripts": {
+    "start": "node .output/server/index.mjs",
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
@@ -20,7 +21,12 @@
     "sass": "^1.62.0"
   },
   "dependencies": {
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "element-plus": "^2.3.3",
+    "maska": "^2.1.8",
     "pinia": "^2.0.35"
+  },
+  "overrides": {
+    "vue": "latest"
   }
 }

@@ -3,16 +3,24 @@ export default defineNuxtConfig({
   app: {
     // head
     head: {
-      title: "Element Plus + Nuxt 3",
+      title: "mini-ecommerce admin",
       meta: [
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         {
           hid: "description",
           name: "description",
-          content: "ElementPlus + Nuxt3",
+          content: "mini-ecommerce admin",
         },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    },
+  },
+
+  ssr: false,
+
+  runtimeConfig: {
+    public: {
+      apiBase: "http://localhost:3000",
     },
   },
 
@@ -23,17 +31,16 @@ export default defineNuxtConfig({
 
   // build modules
   modules: [
-    "@vueuse/nuxt",
-    "@unocss/nuxt",
     "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
     "@element-plus/nuxt",
-    "@nuxtjs/color-mode",
   ],
+
+  css: ["element-plus/dist/index.css"],
 
   elementPlus: {
     icon: "ElIcon",
     importStyle: "scss",
     themes: ["dark"],
-    //imports: ["el-card", "el-form", "el-form-item"],
   },
 });
