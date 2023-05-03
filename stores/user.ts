@@ -7,7 +7,7 @@ export const useUserStore = defineStore("user", {
   }),
   getters: {
     authHeader: (store) =>
-      store.token ? { Authorization: "Bearer " + store.token } : {},
+      store.token ? { Authorization: "Bearer " + store.token } : undefined,
   },
   persist: true,
 });
