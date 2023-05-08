@@ -65,13 +65,14 @@ async function handleRemove(product: Product) {
 </script>
 <template>
   <el-row :gutter="20">
-    <el-col :xl="18">
+    <el-col :xl="18" :md="18" v-loading="pending">
       <h1>Produtos</h1>
-      <el-container :loading="pending" v-if="prods" direction="vertical" :style="{gap: '20px'}">
-        <el-table :data="prods.data" :border="true">
+      <small>Pare o mouse no título dos produtos para acessar as imagens</small>
+      <el-container v-if="prods" direction="vertical" :style="{gap: '20px'}">
+        <el-table :data="prods.data" :border="true" :table-layout="'fixed'">
           <el-table-column prop="title" label="Produto">
             <template #default="s">
-              <el-popover placement="right">
+              <el-popover v-if="s.row.images && s.row.images.length" placement="right">
                 <template #reference>
                   {{ s.row.title }}
                 </template>
@@ -81,6 +82,7 @@ async function handleRemove(product: Product) {
                   :preview-src-list="s.row.images"
                 />
               </el-popover>
+              <span v-else>{{ s.row.title }}</span>
             </template>
           </el-table-column>
           <el-table-column prop="price" label="Preço">
@@ -91,18 +93,21 @@ async function handleRemove(product: Product) {
           <el-table-column prop="itemsInStock" label="Itens em estoque"/>
           <el-table-column>
             <template #default="s">
-              <el-button @click="() => editProduct(s.row)">
-                <ElIconEdit />
-                Editar
-              </el-button>
-              <el-button type="danger" @click="() => handleRemove(s.row)">Remover</el-button>
+              <el-button-group>
+                <el-button @click="() => editProduct(s.row)">
+                  <ElIconEdit />
+                  Editar
+                </el-button>
+                <el-button type="danger" @click="() => handleRemove(s.row)">Remover</el-button>
+              </el-button-group>
             </template>
           </el-table-column>
         </el-table>
         <el-pagination :total="prods.total"></el-pagination>
       </el-container>
+      <el-skeleton v-else />
     </el-col>
-    <el-col :xl="6">
+    <el-col :xl="6" :md="6">
       <div v-if="productToEdit">
         <h2 >Editando o produto: </h2>
         <h3>{{ productToEdit.title }}</h3>
